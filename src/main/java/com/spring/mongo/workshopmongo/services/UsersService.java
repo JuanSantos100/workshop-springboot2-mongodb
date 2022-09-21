@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.mongo.workshopmongo.domain.Users;
+import com.spring.mongo.workshopmongo.dto.UsersDTO;
 import com.spring.mongo.workshopmongo.repository.UsersRepository;
 import com.spring.mongo.workshopmongo.services.exception.ObjectNotFoundException;
 
@@ -31,4 +32,12 @@ public class UsersService {
 				
 		}
 	
+	public Users insert(Users obj) {
+		return repository.insert(obj);
+	}
+	
+	//Método construído nesta classe devido a já ter comunicação com o banco de dados nesta camada.
+	public Users fromDTO (UsersDTO objDto) {
+		return new Users(objDto.getId(), objDto.getName(), objDto.getEmail());
+	}
 }
