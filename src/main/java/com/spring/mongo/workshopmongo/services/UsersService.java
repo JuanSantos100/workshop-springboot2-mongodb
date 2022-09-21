@@ -40,4 +40,9 @@ public class UsersService {
 	public Users fromDTO (UsersDTO objDto) {
 		return new Users(objDto.getId(), objDto.getName(), objDto.getEmail());
 	}
+	
+	public void deleteUsers (String id) {
+		findById(id);
+		repository.deleteById(id);
+	}
 }
